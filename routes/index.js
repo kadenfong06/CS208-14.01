@@ -7,6 +7,23 @@ router.get('/', function(req, res) {
   res.render('landing', { title: 'Downtown Donuts' });
 });
 
+// Menu page route
+router.get('/menu', function(req, res) {
+  // Menu page
+  res.render('menu', { title: 'Menu' });
+});
+
+// About page route
+router.get('/about', function(req, res) {
+  // About page
+  res.render('about', { title: 'About Us' });
+});
+
+// Comments page route
+router.get('/comments', function(req, res) {
+  res.render('comments', { title: 'Customer Comments' });
+});
+
 router.post('/create', function (req, res, next) {
     const { task } = req.body;
     try {
