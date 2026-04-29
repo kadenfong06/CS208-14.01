@@ -1,20 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next){
-  try {
-    req.db.query('SELECT * FROM todos;', (err, results) => {
-      if (err) {
-        console.error('Error fetching todos:', err);
-        return res.status(500).send('Error fetching todos');
-      }
-      res.render('index', { title: 'My Simple TODO', todos: results });
-    });
-  } catch (error) {
-    console.error('Error fetching items:', error);
-    res.status(500).send('Error fetching items');
-  }
+// Homepage route
+router.get('/', function(req, res) {
+  // Just render the landing page, no database stuff here anymore
+  res.render('landing', { title: 'Downtown Donuts' });
 });
 
 router.post('/create', function (req, res, next) {
