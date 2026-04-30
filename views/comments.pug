@@ -20,11 +20,10 @@ block content
 
   h2 What People Are Saying
 
-  // Placeholder comments, will get updated later
-  .comment
-    p Strong coffee and amazing donuts!
-    span.timestamp Posted just now
+  if comments.length === 0
+    p No comments yet. Be the first!
   
-  .comment
-    p The maple bacon bar is so good!
-    span.timestamp Posted 2 hours ago
+  each comment in comments
+    .comment
+      p= comment.comment
+      span.timestamp Posted on {comment.created_at}

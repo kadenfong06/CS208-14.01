@@ -19,9 +19,26 @@ router.get('/about', function(req, res) {
   res.render('about', { title: 'About Us' });
 });
 
-// Comments page route
 router.get('/comments', function(req, res) {
-  res.render('comments', { title: 'Customer Comments' });
+  try {
+    // Grab all comments from DB starting with the latest first
+    req.db.query('SELECT * FROM comments ORDER BY created_at DESC;', (err, results) => {
+      if (err) {
+        console.error('error fetching comments:', err);
+        return res.status(500).send('error fetching comments');
+      }
+
+      // Send comments to pug
+      res.render('comments', { 
+        title: 'Customer Comments',
+        comments: results 
+      });
+    });
+  }
+  catch (error) {
+    console.error('server error:', error);
+    res.status(500).send('server error');
+  }
 });
 
 router.post('/create', function (req, res, next) {
