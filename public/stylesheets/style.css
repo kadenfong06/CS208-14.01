@@ -387,6 +387,16 @@ input, textarea {
   margin-bottom: 10px;
 }
 
+/* Error message */
+.error-msg {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
 /* Pagination */
 .pagination {
   margin-top: 32px;

@@ -69,14 +69,24 @@ router.post('/create', function (req, res) {
 
   // Validation
   if (!name || !comment || name.trim() === '' || comment.trim() === '') {
-    console.log('invalid input');
-    return res.status(400).send('Name and comment are required');
+    return res.render('comments', {
+      title: 'Customer Comments',
+      comments: [],
+      error: 'Name and comment cannot be empty.',
+      currentPage: 1,
+      totalPages: 1
+    });
   }
 
   // Limit length
   if (name.length > 100 || comment.length > 1000) {
-    console.log('input too long');
-    return res.status(400).send('Input too long');
+    return res.render('comments', {
+      title: 'Customer Comments',
+      comments: [],
+      error: 'Input is too long',
+      currentPage: 1,
+      totalPages: 1
+    });
   }
 
   // Insert into DB
@@ -85,7 +95,14 @@ router.post('/create', function (req, res) {
   req.db.query(sql, [name.trim(), comment.trim()], function (err) {
     if (err) {
       console.error(err);
-      return res.status(500).send('Database error');
+
+      return res.render('comments', {
+        title: 'Customer Comments',
+        comments: [],
+        error: 'Something went wrong. Please try again.',
+        currentPage: 1,
+        totalPages: 1
+      });
     }
 
     res.redirect('/comments');

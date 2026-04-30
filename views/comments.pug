@@ -3,6 +3,10 @@ extends layout
 block content
   // Comments page
   h1 Customer Comments
+
+  // Show error message
+  if error
+    .error-msg= error
   
   // Form to submit a comment
   form(method='POST' action='/create')
