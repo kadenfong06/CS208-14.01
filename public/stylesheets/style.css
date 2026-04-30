@@ -1,7 +1,7 @@
 /* Basic styling */
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background-color: #10291D;
   color: #F7F7F7;
 }
@@ -10,7 +10,7 @@ body {
 nav {
   display: flex;
   gap: 20px;
-  padding: 20px;
+  padding: 20px 40px;
   background-color: #10291D;
 }
 
@@ -25,15 +25,16 @@ nav a {
 main {
   max-width: 900px;
   margin: 40px auto;
-  padding: 30px;
-  background: white;
-  color: #333;
+  padding: 40px;
+  background: #F7F7F7;
+  color: #000000;
   border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 /* Headings */
 h1, h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   margin-top: 0;
 }
 
@@ -52,10 +53,11 @@ button {
   padding: 60px 20px;
 }
 
-/* Make the title stand out more */
-.hero h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
+/* Italianno font for logo only */
+.brand-title {
+  font-family: 'Italianno', cursive;
+  font-size: 72px;
+  margin-bottom: 10px
 }
 
 /* Tagline under title */
@@ -110,7 +112,7 @@ button {
 /* Description text under each menu item */
 .desc {
   font-size: 14px;
-  color: #666;
+  color: #777;
   margin-bottom: 10px;
 }
 
