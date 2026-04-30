@@ -2,11 +2,15 @@ extends layout
 
 block content
   // Hero section
-  section.hero
+  .hero
+    // Logo image
+    img.logo(src='/images/logo.png', alt='Downtown Donuts logo', class='logo')
+
+    // Brand title
     h1.brand-title Downtown Donuts
 
-  // Short tagline
-  p.tagline Fresh donuts. Fresh coffee. Made daily
+    // Since 1992 image
+    img.since-img(src='/images/since.png', alt='Since 1992', class='since')
 
-  // Link to the menu page
-  a(href="/menu") View Menu
+    // Short tagline
+    p.tagline Fresh donuts. Fresh coffee. Made daily
