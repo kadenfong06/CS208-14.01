@@ -34,29 +34,49 @@ router.get('/comments', function(req, res) {
         comments: results 
       });
     });
-  }
-  catch (error) {
+  } catch (error) {
     console.error('server error:', error);
     res.status(500).send('server error');
   }
 });
 
-router.post('/create', function (req, res, next) {
-    const { task } = req.body;
-    try {
-      req.db.query('INSERT INTO todos (task) VALUES (?);', [task], (err, results) => {
+router.post('/create', function (req, res) {
+  // Grab form data
+  const { name, comment } = req.body;
+
+  // Validation making sure user didn't submit something empty or just spaces
+  if (!name || !comment || name.trim() === '' || comment.trim() === '') {
+    console.log('invalid input');
+    return res.status(400).send('Name and comment are required');
+  }
+
+  // Limit length
+  if (name.length > 100 || comment.length > 1000) {
+    console.log('input too long');
+    return res.status(400).send('Input too long');
+  }
+
+  try {
+    // Insert into comments table
+    req.db.query(
+      'INSERT INTO comments (name, comment) VALUES (?, ?);',
+      [name.trim(), comment.trim()],
+      (err, results) => {
         if (err) {
-          console.error('Error adding todo:', err);
-          return res.status(500).send('Error adding todo');
+          console.error('error saving comment:', err);
+          return res.status(500).send('error saving comment');
         }
-        console.log('Todo added successfully:', results);
-        // Redirect to the home page after adding
-        res.redirect('/');
-      });
-    } catch (error) {
-      console.error('Error adding todo:', error);
-      res.status(500).send('Error adding todo');
-    }
+
+        console.log('comment saved:', results);
+
+        // Redirect back to comments page
+        res.redirect('/comments');
+      }
+    );
+  } catch (error) {
+    console.error('server error:', error);
+    res.status(500).send('server error');
+  }
 });
 
 router.post('/delete', function (req, res, next) {
