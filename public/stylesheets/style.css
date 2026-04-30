@@ -366,21 +366,21 @@ input, textarea {
 
 /* Individual comment block */
 .comment-card {
-  padding: 16px 0;
-  border-bottom: 1px solid #ddd;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(247, 247, 247, 0.2);
 }
 
 /* Name */
 .comment-name {
   font-weight: 600;
-  color: #10291D;
-  margin-bottom: 4px;
+  color: #F7C64A;
+  margin-bottom: 6px;
 }
 
 /* Date */
 .comment-date {
   font-size: 12px;
-  color: #777;
+  color: rgba(247, 247, 247, 0.6);
   margin-bottom: 10px;
 }
 
@@ -388,6 +388,7 @@ input, textarea {
 .comment-text {
   font-size: 15px;
   line-height: 1.5;
+  color: #F7F7F7;
 }
 
 /* Empty state styling */

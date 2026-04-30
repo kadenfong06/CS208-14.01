@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  // Comments page
   h1 Customer Comments
 
   // Show success message after submitting a comment
@@ -22,8 +23,6 @@ block content
 
   hr
 
-  h2 What People Are Saying
-
   if comments.length === 0
     .empty-state
       h3 No comments yet
@@ -31,9 +30,9 @@ block content
   
   each comment in comments
     .comment-card
-      p.comment-name= comment.name
+      .comment-name= comment.name
       
       // Show readable date
-      p.comment-date Posted on #{new Date(comment.created_at).toLocaleString()}
+      .comment-date Posted on #{new Date(comment.created_at).toLocaleString()}
 
-      p.comment-text= comment.comment
+      .comment-text= comment.comment
