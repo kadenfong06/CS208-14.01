@@ -2,4 +2,29 @@ extends layout
 
 block content
   h1 Customer Comments
-  p comments stuff...
+  
+  // Form to submit a comment
+  form(method='POST' action='/create')
+
+    // Name input
+    label(for='name') Name
+    input(type='text', name='name', id='name', required)
+
+    // Comment input
+    label(for='comment') Comment
+    textarea(name='comment', id='comment', rows='4', required)
+
+    button(type='submit') Submit
+
+  hr
+
+  h2 What People Are Saying
+
+  // Placeholder comments, will get updated later
+  .comment
+    p Strong coffee and amazing donuts!
+    span.timestamp Posted just now
+  
+  .comment
+    p The maple bacon bar is so good!
+    span.timestamp Posted 2 hours ago

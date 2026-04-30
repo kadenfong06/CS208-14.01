@@ -142,3 +142,35 @@ button {
   font-size: 22px;
   margin-bottom: 8px;
 }
+
+/* Comments page form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+
+/* Inputs and textarea */
+input, textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Comment cards */
+.comment {
+  background: #F7F7F7;
+  color: #000000;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Timestamp text */
+.timestamp {
+  font-size: 12px;
+  color: #777;
+}
