@@ -17,6 +17,25 @@ To set up the database, run the `install_db.sh` script in the `setup_scripts` di
 ./setup_scripts/install_db.sh
 ```
 
+## Setup the Database
+Use the following for questions that the script asks:
+
+- Switch to unix_socket authentication [Y/n] n
+- Change the root password? [Y/n] Y
+  - Set the password to 12345
+- Remove anonymous users? [Y/n] Y
+- Disallow root login remotely? [Y/n] Y
+- Remove test database and access to it? [Y/n] Y
+- Reload privilege tables now? [Y/n] Y
+
+Test to make sure the db is running:
+
+```bash
+sudo service mariadb status
+```
+
+There should be an approximated uptime or something similar.
+
 ## Create the Database Tables
 
 Create the initial tables by running:
