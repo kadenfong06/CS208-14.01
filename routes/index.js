@@ -48,7 +48,17 @@ router.get('/comments', function(req, res) {
     req.db.query('SELECT COUNT(*) AS total FROM comments;', (err, countResult) => {
       if (err) {
         console.error('error counting comments:', err);
-        return res.status(500).send('error counting comments');
+        return res.render('comments', {
+          title: 'Customer Comments',
+          comments: [],
+          currentPage: 1,
+          totalPages: 1,
+          error: 'Something went wrong. Please try again.',
+          formData: {
+            name: '',
+            comment: ''
+          }
+        });
       }
 
       const total = countResult[0].total;
@@ -61,7 +71,14 @@ router.get('/comments', function(req, res) {
         (err, results) => {
           if (err) {
             console.error('error fetching comments:', err);
-            return res.status(500).send('error fetching comments');
+            return res.render('comments', {
+              title: 'Customer Comments',
+              comments: [],
+              currentPage: 1,
+              totalPages: 1,
+              error: 'Something went wrong. Please try again.',
+              formData: formData
+            });
           }
 
           // Render page with comments and pagination data
@@ -79,7 +96,17 @@ router.get('/comments', function(req, res) {
 
   } catch (error) {
     console.error('server error:', error);
-    res.status(500).send('server error');
+    res.render('comments', {
+      title: 'Customer Comments',
+      comments: [],
+      currentPage: 1,
+      totalPages: 1,
+      error: 'Something went wrong. Please try again.',
+      formData: {
+        name: '',
+        comment: ''
+      }
+    });
   }
 });
 
