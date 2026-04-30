@@ -113,3 +113,30 @@ button {
   color: #666;
   margin-bottom: 10px;
 }
+
+/* About page spacing */
+.about-section {
+  line-height: 1.7;
+}
+
+/* Card grid for brand highlights */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 30px;
+}
+
+/* Small cards on the about page */
+.info-card {
+  background-color: #F7F7F7;
+  border-left: 4px solid #F7C64A;
+  padding: 18px;
+  border-radius: 8px;
+}
+
+/* Card headings */
+.info-card h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
