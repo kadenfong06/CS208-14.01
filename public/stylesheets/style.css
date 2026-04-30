@@ -127,6 +127,75 @@ button {
   margin-bottom: 10px;
 }
 
+/* Donut holes highlight card */
+.donut-holes-card {
+  background-color: #F7F7F7; /* seasalt */
+  color: #000000;
+  padding: 16px 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+}
+
+/* Make text inside match menu style */
+.donut-holes-card .menu-item {
+  border-bottom: none;
+  padding-bottom: 6px;
+}
+
+.donut-holes-card .desc {
+  margin-bottom: 0;
+  color: #777;
+}
+
+/* Donut holes row layout */
+.donut-holes-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+}
+
+/* Center flavors text */
+.flavors {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Keep price right aligned */
+.donut-holes-row .price {
+  text-align: right;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Center the menu */
+.menu-wrapper {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Main menu card */
+.menu-card {
+  background-color: #F7F7F7;
+  color: #000000;
+  padding: 40px;
+  border-radius: 12px;
+}
+
+/* Section headers inside card */
+.menu-card h1 {
+  margin-bottom: 30px;
+}
+
+/* Fix descriptions for light background */
+.menu-card .desc {
+  color: #777;
+}
+
 /* About page spacing */
 .about-section {
   line-height: 1.7;

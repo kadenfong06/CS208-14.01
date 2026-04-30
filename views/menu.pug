@@ -2,150 +2,166 @@ extends layout
 
 block content
   // Menu page
-  h1 Menu
+  // Outer wrapper
+  .menu-wrapper
 
-  // Donuts section
-  section.menu-section
-    h2 Signature Donuts
+    // Main menu card
+    .menu-card
+      h1 Menu
 
-    .menu-item
-      span Classic Glazed
-      span.price $2.50
-    p.desc Our legendary original – light, fluffy, and perfectly glazed
+      // Donuts section
+      section.menu-section
+        h2 Signature Donuts
 
-    .menu-item
-      span Maple Bacon Bar
-      span.price $3.75
-    p.desc Rich maple glaze topped with crispy applewood bacon
+        .menu-item
+          span Classic Glazed
+          span.price $2.50
+        p.desc Our legendary original – light, fluffy, and perfectly glazed
 
-    .menu-item
-      span Boston Cream
-      span.price $3.50
-    p.desc Bavarian cream filling, dark chocolate ganache topping
+        .menu-item
+          span Maple Bacon Bar
+          span.price $3.75
+        p.desc Rich maple glaze topped with crispy applewood bacon
 
-    .menu-item
-      span Blueberry Cake
-      span.price $3.25
-    p.desc Dense cake donut bursting with fresh blueberries
+        .menu-item
+          span Boston Cream
+          span.price $3.50
+        p.desc Bavarian cream filling, dark chocolate ganache topping
 
-    .menu-item
-      span Cinnamon Sugar Twist
-      span.price $2.75
-    p.desc Hand-twisted and tossed in cinnamon sugar
+        .menu-item
+          span Blueberry Cake
+          span.price $3.25
+        p.desc Dense cake donut bursting with fresh blueberries
 
-    .menu-item
-      span Strawberry Frosted
-      span.price $3.00
-    p.desc Vanilla donut with strawberry glaze and rainbow sprinkles
+        .menu-item
+          span Cinnamon Sugar Twist
+          span.price $2.75
+        p.desc Hand-twisted and tossed in cinnamon sugar
 
-    .menu-item
-      span Chocolate Old Fashioned
-      span.price $3.25
-    p.desc Sour cream donut with rich chocolate glaze
+        .menu-item
+          span Strawberry Frosted
+          span.price $3.00
+        p.desc Vanilla donut with strawberry glaze and rainbow sprinkles
 
-    .menu-item
-      span Lemon Poppy Seed
-      span.price $3.50
-    p.desc Bright lemon glaze with poppy seed crunch
+        .menu-item
+          span Chocolate Old Fashioned
+          span.price $3.25
+        p.desc Sour cream donut with rich chocolate glaze
 
-    .menu-item
-      span Dulce de Leche
-      span.price $3.75
-    p.desc Caramel cream filled, drizzled with dulce de Leche
+        .menu-item
+          span Lemon Poppy Seed
+          span.price $3.50
+        p.desc Bright lemon glaze with poppy seed crunch
 
-    .menu-item
-      span PB & J
-      span.price $3.75
-    p.desc Peanut butter glaze with raspberry filling
-  
-  // Coffee section
-  section.menu-section
-    h2 Coffee
+        .menu-item
+          span Dulce de Leche
+          span.price $3.75
+        p.desc Caramel cream filled, drizzled with dulce de Leche
 
-    .menu-item
-      span Drip Coffee
-      span.price $2.25 - $3.25
-    p.desc House blend or single origin
+        .menu-item
+          span PB & J
+          span.price $3.75
+        p.desc Peanut butter glaze with raspberry filling
 
-    .menu-item
-      span Cold Brew
-      span.price $3.50 - $4.50
-    p.desc Slow-steeped 18 hours, smooth and bold
+        // Donut holes special
+        .donut-holes-card
+          .donut-holes-row
+            span Donut Holes
+            span.flavors Glazed, chocolate, or cinnamon sugar
+            .price
+              div Half Dozen $4.50
+              div Dozen $7.99
 
-    .menu-item
-      span Espresso
-      span.price $3.00
-    p.desc Double shot pulled to order
+          p.desc Mix and match flavors!
+      
+      // Coffee section
+      section.menu-section
+        h2 Coffee
 
-    .menu-item
-      span Americano
-      span.price $3.25 - $4.25
-    p.desc Espresso and hot water, classic and clean
+        .menu-item
+          span Drip Coffee
+          span.price $2.25 - $3.25
+        p.desc House blend or single origin
 
-    .menu-item
-      span Latte
-      span.price $4.25 - $5.25
-    p.desc Espresso with steamed milk, choice of milk
+        .menu-item
+          span Cold Brew
+          span.price $3.50 - $4.50
+        p.desc Slow-steeped 18 hours, smooth and bold
 
-    .menu-item
-      span Cappuccino
-      span.price $4.25 - $5.25
-    p.desc Equal parts espresso, steamed milk, foam
+        .menu-item
+          span Espresso
+          span.price $3.00
+        p.desc Double shot pulled to order
 
-    .menu-item
-      span Mocha
-      span.price $4.75 - $5.75
-    p.desc Espresso, chocolate, steamed milk, whipped cream
+        .menu-item
+          span Americano
+          span.price $3.25 - $4.25
+        p.desc Espresso and hot water, classic and clean
 
-    .menu-item
-      span Vanilla Chai Latte
-      span.price $4.50 - $5.50
-    p.desc Spiced chai with vanilla and steamed milk
+        .menu-item
+          span Latte
+          span.price $4.25 - $5.25
+        p.desc Espresso with steamed milk, choice of milk
 
-  // Other Drinks section
-  section.menu-section
-    h2 Other Drinks
+        .menu-item
+          span Cappuccino
+          span.price $4.25 - $5.25
+        p.desc Equal parts espresso, steamed milk, foam
 
-    .menu-item
-      span Fresh Squeezed OJ
-      span.price $3.50
+        .menu-item
+          span Mocha
+          span.price $4.75 - $5.75
+        p.desc Espresso, chocolate, steamed milk, whipped cream
 
-    .menu-item
-      span Hot Chocolate
-      span.price $3.75
+        .menu-item
+          span Vanilla Chai Latte
+          span.price $4.50 - $5.50
+        p.desc Spiced chai with vanilla and steamed milk
 
-    .menu-item
-      span Iced Tea
-      span.price $2.50
+      // Other Drinks section
+      section.menu-section
+        h2 Other Drinks
 
-    .menu-item
-      span Lemonade
-      span.price $2.75
+        .menu-item
+          span Fresh Squeezed OJ
+          span.price $3.50
 
-    .menu-item
-      span Milk (Whole, Chocolate, Strawberry)
-      span.price $2.00
+        .menu-item
+          span Hot Chocolate
+          span.price $3.75
 
-    .menu-item
-      span Apple Cider (Seasonal)
-      span.price $3.50
-  
-  // Breakfast section
-  section.menu-section
-    h2 Breakfast Bites
+        .menu-item
+          span Iced Tea
+          span.price $2.50
 
-    .menu-item
-      span Egg & Cheese Croissant
-      span.price $5.50
+        .menu-item
+          span Lemonade
+          span.price $2.75
 
-    .menu-item
-      span Bacon Breakfast Sandwich
-      span.price $6.25
+        .menu-item
+          span Milk (Whole, Chocolate, Strawberry)
+          span.price $2.00
 
-    .menu-item
-      span Avocado Toast
-      span.price $5.75
+        .menu-item
+          span Apple Cider (Seasonal)
+          span.price $3.50
+      
+      // Breakfast section
+      section.menu-section
+        h2 Breakfast Bites
 
-    .menu-item
-      span Yogurt Parfait
-      span.price $4.50
+        .menu-item
+          span Egg & Cheese Croissant
+          span.price $5.50
+
+        .menu-item
+          span Bacon Breakfast Sandwich
+          span.price $6.25
+
+        .menu-item
+          span Avocado Toast
+          span.price $5.75
+
+        .menu-item
+          span Yogurt Parfait
+          span.price $4.50
