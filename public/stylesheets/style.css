@@ -45,3 +45,38 @@ button {
   cursor: pointer;
   font-weight: 600;
 }
+
+/* Center hero stuff */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+/* Make the title stand out more */
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+/* Tagline under title */
+.tagline {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+/* Styled button, also for links */
+.button {
+  display: inline-block;
+  background-color: #F7C64A;
+  color: #10291D;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+/* Hover effect */
+.button:hover {
+  opacity: 0.9;
+}
