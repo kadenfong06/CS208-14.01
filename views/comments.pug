@@ -3,10 +3,6 @@ extends layout
 block content
   // Comments page
   h1 Customer Comments
-
-  // Show success message after submitting a comment
-  if success
-    .success-msg Comment posted successfully!
   
   // Form to submit a comment
   form(method='POST' action='/create')
@@ -36,3 +32,13 @@ block content
       .comment-date Posted on #{new Date(comment.created_at).toLocaleString()}
 
       .comment-text= comment.comment
+  
+  // Pagination controls
+  .pagination
+  if currentPage > 1
+    a.nav-btn(href=`/comments?page=${currentPage - 1}`) <
+
+  span.page-info #{currentPage} / #{totalPages}
+
+  if currentPage < totalPages
+    a.nav-btn(href=`/comments?page=${currentPage + 1}`) >

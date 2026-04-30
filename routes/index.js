@@ -21,23 +21,42 @@ router.get('/about', function(req, res) {
 
 router.get('/comments', function(req, res) {
   try {
-    // Check if we just submitted a comment
-    const success = req.query.success;
+    // Pagination setup
+    const limit = 5;
+    const page = parseInt(req.query.page) || 1;
+    const offset = (page - 1) * limit;
 
-    // Grab all comments from DB starting with the latest first
-    req.db.query('SELECT * FROM comments ORDER BY created_at DESC;', (err, results) => {
+    // Grab total number of comments
+    req.db.query('SELECT COUNT(*) AS total FROM comments;', (err, countResult) => {
       if (err) {
-        console.error('error fetching comments:', err);
-        return res.status(500).send('error fetching comments');
+        console.error('error counting comments:', err);
+        return res.status(500).send('error counting comments');
       }
 
-      // Send comments and success flag to pug
-      res.render('comments', { 
-        title: 'Customer Comments',
-        comments: results,
-        success: success
-      });
+      const total = countResult[0].total;
+      const totalPages = Math.ceil(total / limit);
+
+      // Grab paginated comments from DB
+      req.db.query(
+        'SELECT * FROM comments ORDER BY created_at DESC LIMIT ? OFFSET ?;',
+        [limit, offset],
+        (err, results) => {
+          if (err) {
+            console.error('error fetching comments:', err);
+            return res.status(500).send('error fetching comments');
+          }
+
+          // Render page with comments and pagination data
+          res.render('comments', { 
+            title: 'Customer Comments',
+            comments: results,
+            currentPage: page,
+            totalPages: totalPages
+          });
+        }
+      );
     });
+
   } catch (error) {
     console.error('server error:', error);
     res.status(500).send('server error');
@@ -48,7 +67,7 @@ router.post('/create', function (req, res) {
   // Grab form data
   const { name, comment } = req.body;
 
-  // Validation making sure user didn't submit something empty or just spaces
+  // Validation
   if (!name || !comment || name.trim() === '' || comment.trim() === '') {
     console.log('invalid input');
     return res.status(400).send('Name and comment are required');
@@ -60,45 +79,17 @@ router.post('/create', function (req, res) {
     return res.status(400).send('Input too long');
   }
 
-  try {
-    // Insert into comments table
-    req.db.query(
-      'INSERT INTO comments (name, comment) VALUES (?, ?);',
-      [name.trim(), comment.trim()],
-      (err, results) => {
-        if (err) {
-          console.error('error saving comment:', err);
-          return res.status(500).send('error saving comment');
-        }
+  // Insert into DB
+  const sql = 'INSERT INTO comments (name, comment) VALUES (?, ?)';
 
-        console.log('comment saved:', results);
-
-        // Redirect back to comments page
-        res.redirect('/comments?success=1');
-      }
-    );
-  } catch (error) {
-    console.error('server error:', error);
-    res.status(500).send('server error');
-  }
-});
-
-router.post('/delete', function (req, res, next) {
-    const { id } = req.body;
-    try {
-      req.db.query('DELETE FROM todos WHERE id = ?;', [id], (err, results) => {
-        if (err) {
-          console.error('Error deleting todo:', err);
-          return res.status(500).send('Error deleting todo');
-        }
-        console.log('Todo deleted successfully:', results);
-        // Redirect to the home page after deletion
-        res.redirect('/');
-    });
-    }catch (error) {
-        console.error('Error deleting todo:', error);
-        res.status(500).send('Error deleting todo:');
+  req.db.query(sql, [name.trim(), comment.trim()], function (err) {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Database error');
     }
+
+    res.redirect('/comments');
+  });
 });
 
 module.exports = router;
