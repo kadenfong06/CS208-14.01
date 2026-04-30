@@ -26,6 +26,18 @@ router.get('/comments', function(req, res) {
     const page = parseInt(req.query.page) || 1;
     const offset = (page - 1) * limit;
 
+    // Handle error from query param
+    const errorType = req.query.error;
+    let errorMessage = null;
+
+    if (errorType === 'empty') {
+      errorMessage = 'Name and comment cannot be empty';
+    } else if (errorType === 'toolong') {
+      errorMessage = 'Input is too long';
+    } else if (errorType === 'server') {
+      errorMessage = 'Something went wrong. Please try again.';
+    }
+
     // Grab total number of comments
     req.db.query('SELECT COUNT(*) AS total FROM comments;', (err, countResult) => {
       if (err) {
@@ -51,7 +63,8 @@ router.get('/comments', function(req, res) {
             title: 'Customer Comments',
             comments: results,
             currentPage: page,
-            totalPages: totalPages
+            totalPages: totalPages,
+            error: errorMessage
           });
         }
       );
@@ -69,24 +82,12 @@ router.post('/create', function (req, res) {
 
   // Validation
   if (!name || !comment || name.trim() === '' || comment.trim() === '') {
-    return res.render('comments', {
-      title: 'Customer Comments',
-      comments: [],
-      error: 'Name and comment cannot be empty.',
-      currentPage: 1,
-      totalPages: 1
-    });
+    return res.redirect('/comments?error=empty');
   }
 
   // Limit length
   if (name.length > 100 || comment.length > 1000) {
-    return res.render('comments', {
-      title: 'Customer Comments',
-      comments: [],
-      error: 'Input is too long',
-      currentPage: 1,
-      totalPages: 1
-    });
+    return res.redirect('/comments?error=toolong');
   }
 
   // Insert into DB
@@ -95,14 +96,7 @@ router.post('/create', function (req, res) {
   req.db.query(sql, [name.trim(), comment.trim()], function (err) {
     if (err) {
       console.error(err);
-
-      return res.render('comments', {
-        title: 'Customer Comments',
-        comments: [],
-        error: 'Something went wrong. Please try again.',
-        currentPage: 1,
-        totalPages: 1
-      });
+      return res.redirect('/comments?error=server');
     }
 
     res.redirect('/comments');
