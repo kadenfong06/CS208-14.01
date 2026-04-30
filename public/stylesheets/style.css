@@ -1,8 +1,47 @@
+/* Basic styling */
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #10291D;
+  color: #F7F7F7;
 }
 
-a {
-  color: #00B7FF;
+/* Navbar styling */
+nav {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #10291D;
+}
+
+/* Nav links */
+nav a {
+  color: #F7C64A;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Main content area */
+main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: white;
+  color: #333;
+  border-radius: 10px;
+}
+
+/* Headings */
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  margin-top: 0;
+}
+
+/* Buttons */
+button {
+  background-color: #F7C64A;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 600;
 }

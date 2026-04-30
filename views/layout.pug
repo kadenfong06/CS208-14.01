@@ -2,6 +2,20 @@ doctype html
 html
   head
     title= title
+    // Import Playfair for headings and Inter for everything else
+    link(href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap", rel="stylesheet")
+
+    // Main stylesheet
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+
+    body
+      // Navbar for navigation
+      nav
+        a(href="/") Home
+        a(href="/menu") Menu
+        a(href="/about") About
+        a(href="/comments") Comments
+
+      // Main page stuff
+      main
+        block content
