@@ -26,6 +26,12 @@ router.get('/comments', function(req, res) {
     const page = parseInt(req.query.page) || 1;
     const offset = (page - 1) * limit;
 
+    // Keep form input after validation errors
+    const formData = {
+      name: req.query.name || '',
+      comment: req.query.comment || ''
+    };
+
     // Handle error from query param
     const errorType = req.query.error;
     let errorMessage = null;
@@ -64,7 +70,8 @@ router.get('/comments', function(req, res) {
             comments: results,
             currentPage: page,
             totalPages: totalPages,
-            error: errorMessage
+            error: errorMessage,
+            formData: formData
           });
         }
       );
@@ -82,12 +89,16 @@ router.post('/create', function (req, res) {
 
   // Validation
   if (!name || !comment || name.trim() === '' || comment.trim() === '') {
-    return res.redirect('/comments?error=empty');
+    return res.redirect(
+      `/comments?error=empty&name=${encodeURIComponent(name || '')}&comment=${encodeURIComponent(comment || '')}`
+    );
   }
 
   // Limit length
   if (name.length > 100 || comment.length > 1000) {
-    return res.redirect('/comments?error=toolong');
+    return res.redirect(
+      `/comments?error=toolong&name=${encodeURIComponent(name)}&comment=${encodeURIComponent(comment)}`
+    );
   }
 
   // Insert into DB
@@ -96,7 +107,9 @@ router.post('/create', function (req, res) {
   req.db.query(sql, [name.trim(), comment.trim()], function (err) {
     if (err) {
       console.error(err);
-      return res.redirect('/comments?error=server');
+      return res.redirect(
+        `/comments?error=server&name=${encodeURIComponent(name)}&comment=${encodeURIComponent(comment)}`
+      );
     }
 
     res.redirect('/comments');

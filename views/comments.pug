@@ -6,20 +6,21 @@ block content
 
   // Show error message
   if error
-    .error-msg= error
+    .error-msg(role="alert", aria-live="assertive")= error
   
   // Form to submit a comment
   form(method='POST' action='/create')
+    fieldset
+      legend Leave a Comment
+      // Name input
+      label(for='name') Name
+      input(type='text', name='name', id='name', required, value=formData.name)
 
-    // Name input
-    label(for='name') Name
-    input(type='text', name='name', id='name', required)
+      // Comment input
+      label(for='comment') Comment
+      textarea(name='comment', id='comment', rows='4', required)= formData.comment
 
-    // Comment input
-    label(for='comment') Comment
-    textarea(name='comment', id='comment', rows='4', required)
-
-    button(type='submit') Submit
+      button(type='submit') Submit
 
   hr
 
@@ -41,9 +42,9 @@ block content
   if comments.length > 0
     .pagination
       if currentPage > 1
-        a(href=`/comments?page=${currentPage - 1}`) <
+        a(href=`/comments?page=${currentPage - 1}` aria-label="Previous page") <
 
       span #{currentPage} / #{totalPages}
 
       if currentPage < totalPages
-        a(href=`/comments?page=${currentPage + 1}`) >
+        a(href=`/comments?page=${currentPage + 1}` aria-label="Next page") >

@@ -437,3 +437,21 @@ input, textarea {
   background-color: #F7C64A;
   color: #10291D;
 }
+
+/* Accessibility form grouping */
+fieldset {
+  border: 2px solid #F7C64A; /* saffron */
+  padding: 20px;
+  margin-bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Legend styling */
+legend {
+  color: #F7C64A;
+  font-weight: 600;
+  padding: 0 10px;
+}
