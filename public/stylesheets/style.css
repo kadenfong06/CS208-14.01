@@ -389,41 +389,41 @@ input, textarea {
 
 /* Pagination */
 .pagination {
+  margin-top: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 18px;
-  margin-top: 40px;
+  gap: 16px;
 }
 
-/* Arrow buttons */
-.nav-btn {
+/* Pagination text */
+.pagination span {
+  color: #F7C64A;
+  font-weight: 600;
+}
+
+/* Pagination arrows */
+.pagination a {
   color: #F7C64A;
   text-decoration: none;
-  font-weight: 600;
-  padding: 6px 12px;
+  font-weight: bold;
+  font-size: 18px;
+
   border: 1px solid #F7C64A;
+  padding: 6px 12px;
   border-radius: 6px;
-  min-width: 32px;
-  text-align: center;
+
+  transition: all 0.2s ease;
 }
 
-/* Force same color always */
-.nav-btn:visited,
-.nav-btn:active,
-.nav-btn:link {
+/* REMOVE default blue/purple states */
+.pagination a:visited,
+.pagination a:active {
   color: #F7C64A;
 }
 
-/* Hover state */
-.nav-btn:hover {
+/* Hover effect */
+.pagination a:hover {
   background-color: #F7C64A;
   color: #10291D;
-}
-
-/* Page text */
-.page-info {
-  color: #F7C64A;
-  font-weight: 500;
-  padding: 0 6px;
 }

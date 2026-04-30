@@ -34,11 +34,12 @@ block content
       .comment-text= comment.comment
   
   // Pagination controls
-  .pagination
-  if currentPage > 1
-    a.nav-btn(href=`/comments?page=${currentPage - 1}`) <
+  if comments.length > 0
+    .pagination
+      if currentPage > 1
+        a(href=`/comments?page=${currentPage - 1}`) <
 
-  span.page-info #{currentPage} / #{totalPages}
+      span #{currentPage} / #{totalPages}
 
-  if currentPage < totalPages
-    a.nav-btn(href=`/comments?page=${currentPage + 1}`) >
+      if currentPage < totalPages
+        a(href=`/comments?page=${currentPage + 1}`) >
