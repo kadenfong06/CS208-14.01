@@ -267,6 +267,22 @@ button {
   letter-spacing: 0.5px;
 }
 
+/* Ordering links */
+.order-links a {
+  color: #F7C64A;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.order-links a:visited,
+.order-links a:active {
+  color: #F7C64A;
+}
+
+.order-links a:hover {
+  text-decoration: underline;
+}
+
 /* Actual content lines */
 .time,
 .order-links {
