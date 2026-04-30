@@ -2,6 +2,10 @@ extends layout
 
 block content
   h1 Customer Comments
+
+  // Show success message after submitting a comment
+  if success
+    .success-msg Comment posted successfully!
   
   // Form to submit a comment
   form(method='POST' action='/create')
@@ -21,7 +25,9 @@ block content
   h2 What People Are Saying
 
   if comments.length === 0
-    p No comments yet. Be the first!
+    .empty-state
+      h3 No comments yet
+      p Be the first to share your thoughts!
   
   each comment in comments
     .comment-card

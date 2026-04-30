@@ -21,6 +21,9 @@ router.get('/about', function(req, res) {
 
 router.get('/comments', function(req, res) {
   try {
+    // Check if we just submitted a comment
+    const success = req.query.success;
+
     // Grab all comments from DB starting with the latest first
     req.db.query('SELECT * FROM comments ORDER BY created_at DESC;', (err, results) => {
       if (err) {
@@ -28,10 +31,11 @@ router.get('/comments', function(req, res) {
         return res.status(500).send('error fetching comments');
       }
 
-      // Send comments to pug
+      // Send comments and success flag to pug
       res.render('comments', { 
         title: 'Customer Comments',
-        comments: results 
+        comments: results,
+        success: success
       });
     });
   } catch (error) {
@@ -70,7 +74,7 @@ router.post('/create', function (req, res) {
         console.log('comment saved:', results);
 
         // Redirect back to comments page
-        res.redirect('/comments');
+        res.redirect('/comments?success=1');
       }
     );
   } catch (error) {
