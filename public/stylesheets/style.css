@@ -80,3 +80,36 @@ button {
 .button:hover {
   opacity: 0.9;
 }
+
+/* Menu sections spacing */
+.menu-section {
+  margin-bottom: 40px;
+}
+
+/* Section titles */
+.menu-section h2 {
+  border-bottom: 2px solid #F7C64A;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+/* Each menu item row */
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed #ddd;
+  padding: 8px 0;
+  font-weight: 500;
+}
+
+/* Price styling */
+.price {
+  font-weight: 600;
+}
+
+/* Description text under each menu item */
+.desc {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
