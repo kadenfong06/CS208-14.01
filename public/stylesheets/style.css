@@ -155,20 +155,63 @@ button {
   align-items: center;
 }
 
-/* Center flavors text */
+/* Donut holes special flavors */
 .flavors {
   text-align: center;
   font-size: 14px;
   color: #666;
 }
 
-/* Keep price right aligned */
+/* Donut holes special price rows */
 .donut-holes-row .price {
   text-align: right;
   font-weight: 600;
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+/* Addons card */
+.addons-card {
+  background-color: #F7F7F7;
+  color: #000000;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+}
+
+/* Addons row layout */
+.addons-row {
+  display: grid;
+  grid-template-columns: 120px 1fr; /* fixed label width */
+  gap: 15px;
+  align-items: start;
+}
+
+/* Addons title */
+.addons-title {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Addons items */
+.addons-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px; /* vertical + horizontal spacing */
+  font-size: 14px;
+  color: #666;
+}
+
+.addons-items span::after {
+  content: "|";
+  margin-left: 10px;
+  color: #aaa;
+}
+
+.addons-items span:last-child::after {
+  content: "";
 }
 
 /* Center the menu */
