@@ -471,3 +471,50 @@ legend {
   font-weight: 600;
   padding: 0 10px;
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  /* Main layout */
+  main {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  /* Navbar */
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  /* Hero section */
+  .brand-title {
+    font-size: 48px;
+  }
+
+  .logo {
+    width: 280px;
+  }
+
+  /* Menu */
+  .menu-card {
+    padding: 20px;
+  }
+
+  .menu-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  /* Form */
+  input, textarea {
+    width: 100%;
+  }
+
+  /* Pagination */
+  .pagination {
+    gap: 10px;
+  }
+}
