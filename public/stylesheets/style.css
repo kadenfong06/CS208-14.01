@@ -174,3 +174,29 @@ input, textarea {
   font-size: 12px;
   color: #777;
 }
+
+/* Individual comment block */
+.comment-card {
+  padding: 16px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Name */
+.comment-name {
+  font-weight: 600;
+  color: #10291D;
+  margin-bottom: 4px;
+}
+
+/* Date */
+.comment-date {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+/* Comment text */
+.comment-text {
+  font-size: 15px;
+  line-height: 1.5;
+}
